@@ -1,0 +1,27 @@
+<div class="form">
+  <div class="form__container">
+    <div class="form__title">Regístrate</div>
+    <form class="form__form" [formGroup]="registryForm">
+      <div>
+        <input type="text" placeholder="Nombre" formControlName="name">
+      </div>
+      <div class="inputs">
+        <input class="input" type="text" placeholder="Correo" formControlName="email">
+        <input class="input" type="text" placeholder="Teléfono" formControlName="phone">
+      </div>
+      <div>
+        <input type="text" placeholder="Mensaje" formControlName="message">
+      </div>
+    </form>
+    <div class="form__buttons">
+      <button type="submit" class="form__button form__button" (click)="onSubmit()">Registrarme</button>
+    </div>
+  </div>
+  <button class="home__button home__button--green home__button--absolute-right show-desktop" (click)="back()">Volver</button>
+</div>
+
+<div class="footer">
+  <div class="footer__container">
+    <p class="footer__text-cooncep">Privacy polic</p>
+  </div>
+</div>

@@ -1,0 +1,147 @@
+.form {
+  display: flex;
+  // flex-flow: wrap;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  min-height: 500px;
+  height: 90vh;
+  overflow-y: auto;
+  background-color: #efefef;
+
+  &__image {
+    display: none;
+  }
+
+  @media (min-width: $tablet) {
+
+    & .form__image {
+      display: block;
+      width: 50%;
+    }
+  }
+
+  &__container {
+    @include container();
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1;
+    padding: 2em;
+
+    @media (min-width: $tablet) {
+      padding: 0;
+    }
+  }
+
+  &__title {
+    font-size: 30px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 0.83;
+    letter-spacing: normal;
+    text-align: center;
+    color: #222222;
+
+    @media (min-width: $tablet) {
+      font-size: 40px;
+      margin: 0 0 2em 0;
+    }
+  }
+
+  &__form {
+    @media (min-width: $tablet) {
+
+      & .inputs {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
+      & .input {
+        width: 48%;
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 3em;
+    position: relative;
+
+    @media (min-width: $tablet) {
+      width: 50%;
+      flex-direction: row;
+      justify-content: space-around;
+    }
+  }
+
+  &__button {
+    @include button(transparent, black, black, black, black, white);
+    margin: 1em;
+
+    @media (min-width: $tablet) {
+      margin: 3em 1em;
+    }
+
+    &--green {
+      @include button($color-primary-green, $color-primary-green, white, black, black, white);
+
+      @media (min-width: $tablet) {
+        position: fixed;
+        bottom: 10%;
+        right: 0;
+        margin: 0;
+      }
+    }
+
+    &--absolute {
+      display: none;
+      margin: 0;
+      position: fixed;
+      bottom: 10%;
+      left: 0;
+
+      @media (min-width: $tablet) {
+        display: block;
+      }
+    }
+  }
+}
+
+input[type='text'] {
+  outline: none;
+  font-family: inherit;
+  width: 375px;
+  padding: 10px 0;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid #222222;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.43;
+  letter-spacing: normal;
+  text-align: left;
+  color: #222222;
+  & *:focus {
+    outline: none;
+  }
+}
+
+.ng-valid[required],
+.ng-valid.required {
+  color: $color-primary-green;
+}
+
+.ng-invalid:not(form) {
+  color: $red;
+}
+

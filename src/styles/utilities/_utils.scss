@@ -1,0 +1,13 @@
+.show-desktop {
+  display: none !important;
+  @media (min-width: $desktop) {
+    display: block !important;
+  }
+}
+
+.show-mobile {
+  display: block !important;
+  @media (min-width: $desktop) {
+    display: none !important;
+  }
+}

@@ -2,12 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>TestMusicbettles</title>
+  <title>Test Music Bettles</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Chrome, Firefox OS and Opera -->
+  <meta name="theme-color" content="#0cc192">
+  <!-- Windows Phone -->
+  <meta name="msapplication-navbutton-color" content="#0cc192">
+  <!-- iOS Safari -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="Test Music Bettles"/>
+  <meta property="og:image" content="http://{{ request.META.HTTP_HOST }}"/>
+  <meta property="og:url" content="http://{{ request.META.HTTP_HOST }}/"/>
+  <meta property="og:description" content="Test Music Bettles"/>
+  <meta property="og:site_name" content="Test Music Bettles"/>
+  <!-- Twitter Card meta tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Test Music Bettles"/>
+  <meta name="twitter:image" content="http://{{ request.META.HTTP_HOST }}"/>
+  <meta name="twitter:site" content="http://{{ request.META.HTTP_HOST }}/"/>
+  <meta name="twitter:description" content="Test Music Bettles"/>
+  <meta name="twitter:creator" content="@TeApuntas"/>
+  <link rel="canonical" href="http://{{ request.META.HTTP_HOST }}/"/>
 </head>
-<body>
+<body class="mat-typography">
   <app-root></app-root>
 </body>
 </html>

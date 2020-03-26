@@ -1,0 +1,24 @@
+<div class="home">
+  <video width="100%" height="100%" class="video" onloadedmetadata="this.muted=true" autoplay loop>
+    <source src="/assets/videos/recycle_desk.mp4" type="video/mp4">
+    <source src="/assets/videos/recycle_desk.ogg" type="video/ogg">
+  </video>
+
+  <video width="100%" height="100%" class="video-mobile" onloadedmetadata="this.muted=true" autoplay oop>
+    <source src="/assets/videos/recycle_mobile.mp4" type="video/mp4">
+    <source src="/assets/videos/recycle_mobile.ogg" type="video/ogg">
+  </video>
+
+  <div class="home__container">
+    <div class="home__content">
+      <h1 class="home__title">Recicla <span>tu fuerza</span></h1>
+      <p class="home__text">sustenta un equilibrio de vida.</p>
+    </div>
+    <div class="home__buttons">
+      <div class="home__button home__button--green" (click)="registry()" >Registrarme</div>
+      <button class="home__button">New Recycler</button>
+    </div>
+  </div>
+  <button class="home__button home__button--green home__button--absolute">Comprar</button>
+  <button class="home__button home__button--green home__button--absolute-right show-desktop">Reservar</button>
+</div>

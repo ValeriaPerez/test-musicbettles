@@ -1,0 +1,218 @@
+/* --------------------------------
+	"Mixins" styles
+-------------------------------- */
+
+@mixin fontSize($font){
+	font-size: ($font / $font-size-base) * 1em;
+}
+
+@mixin container(){
+  box-sizing: border-box;
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  max-width: $desktop-container;
+}
+
+@mixin clearButton(){
+  cursor: pointer;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+@mixin clearLink(){
+  text-decoration: none;
+  color: $black;
+}
+
+@mixin gridRow(){
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+@mixin gridSpan($size){
+  width: percentage($number: ($size / 12));
+}
+@mixin gridOffset($size){
+  margin-left: percentage($number: ($size / 12));
+}
+
+@mixin aspectRatio($width, $height) {
+	position: relative;
+	&:before {
+		display: block;
+		content: "";
+		width: 100%;
+		padding-top: ($height / $width) * 100%;
+	}
+	> .content {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+}
+
+@mixin fullContainer(){
+	box-sizing: border-box;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	@media (min-width: ($tablet + 1)) {
+		min-height: 610px;
+	}
+}
+
+
+@mixin absoluteFullContainer() {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
+
+@mixin centeredImage(){
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	max-width: 100%;
+	max-height: 100%;
+	position: absolute;
+}
+
+@mixin fullBackground(){
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+}
+
+@mixin setImg(){
+	display: block;
+	width: 100%;
+}
+
+@mixin transformOrigin($prop){
+	-moz-transform-origin: $prop;
+	-ms-transform-origin: $prop;
+	-webkit-transform-origin: $prop;
+	transform-origin: $prop;
+}
+
+@mixin animation ($animate ) {
+	-webkit-animation: $animate;
+	-moz-animation: $animate;
+	-ms-animation: $animate;
+	-o-animation: $animate;
+	animation: $animate;
+}
+
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin absCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// MEDIA QUERY MANAGER
+@mixin version($breakpoint) {
+  @if $breakpoint == phone {
+      @media (max-width: 48em) { @content }; // 768px
+  }
+
+  @if $breakpoint == desktop {
+      @media (min-width: 48em) { @content }; //768px
+  }
+}
+
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
+
+  @if $u1==$u2 and $u1==$u3 and $u1==$u4 {
+    & {
+      font-size: $min-font-size;
+
+      @media screen and (min-width: $min-vw) {
+        font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+      }
+
+      @media screen and (min-width: $max-vw) {
+        font-size: $max-font-size;
+      }
+    }
+  }
+}
+
+@mixin button($background, $border, $text, $backgroundH, $borderH, $textH){
+  @include fontSize(15px);
+  outline: none;
+  cursor: pointer;
+  background: $background;
+  border: none;
+  text-transform: inherit;
+  text-decoration: none;
+  color: $text;
+  position: relative;
+  z-index: 1;
+  padding: 1.2em 4.5em;
+  line-height: 1;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+
+  &:before{
+    @include absoluteFullContainer;
+    display: block;
+    content: '';
+    z-index: -1;
+    border: 1px solid $border;
+    transition: all 0.2s ease-in-out;
+
+  }
+
+  &:after{
+    @include absoluteFullContainer;
+    display: block;
+    content: '';
+    right: 100%;
+    background-color: $backgroundH;
+    z-index: -1;
+    transition: all 0.2s ease-in-out;
+  }
+
+  &:hover{
+    color: $textH;
+    
+    &:before{
+      top: 0.5em;
+      left: 0.5em;
+      right: -0.5em;
+      bottom: -0.5em;
+      border-color: $borderH;
+    }
+
+    &:after{
+      right: 0;
+    }
+  }
+}

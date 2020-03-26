@@ -6,5 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'test-musicbettles';
+  public setIsLoading: boolean = true;
+  constructor() { }
+
+  ngOnInit() {
+    this.setLoading();
+  }
+
+  setLoading() {
+    setTimeout(()=>{
+      this.setIsLoading = false;
+    }, 4000);
+  }
 }
